@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنتجات | متجر قطع السيارات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">ZOMSTORE</div>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="products.html">المنتجات</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="contact.html">اتصل بنا</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="cart.html" class="cart-link">السلة <span id="cartCount" class="cart-badge"></span></a>
+        <div class="hamburger-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="filters-search">
+      <div class="filters">
+        <label>التصنيف:
+          <select id="categoryFilter">
+            <option value="all">الكل</option>
+            <option value="فلاتر">فلاتر</option>
+            <option value="زيوت">زيوت</option>
+            <option value="فرامل">فرامل</option>
+            <option value="بطاريات">بطاريات</option>
+            <option value="إطارات">إطارات</option>
+            <option value="زينة السيارات">زينة السيارات</option>
+          </select>
+        </label>
+      </div>
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+      </div>
+    </section>
+    <section id="productsList" class="products-list">
+      <!-- المنتجات ستظهر هنا -->
+    </section>
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div id="modalDetails"></div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="social-icons">
+      <a href="https://wa.me/رقم_واتسابك" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com/صفحتك" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/صفحتك" target="_blank" title="انستغرام"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:yourstore@email.com" title="البريد الإلكتروني"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>جميع الحقوق محفوظة &copy; 2024</p>
+  </footer>
+  <script src="js/products.js"></script>
+</body>
+</html> 
