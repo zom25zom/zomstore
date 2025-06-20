@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Determine the correct API URL based on the environment
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const apiUrl = isLocal ? 'http://localhost:3001' : 'https://zomstore.onrender.com'; // Replace with your actual deployed backend URL
+    const apiUrl = isLocal ? 'http://localhost:3001' : 'https://zomstore-backend.onrender.com'; // Replace with your actual deployed backend URL
 
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const products = JSON.parse(localStorage.getItem('productsCache') || '[]');
