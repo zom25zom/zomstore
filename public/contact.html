@@ -85,53 +85,57 @@
     </div>
     <p>جميع الحقوق محفوظة &copy; 2024</p>
   </footer>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          const formData = new FormData(contactForm);
-          const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            message: formData.get('message')
-          };
-          const submitBtn = contactForm.querySelector('button[type="submit"]');
-          const originalText = submitBtn.textContent;
-          submitBtn.textContent = 'جاري الإرسال...';
-          submitBtn.disabled = true;
-          const messageDiv = document.getElementById('contactMessage');
-          messageDiv.style.display = 'none';
-          try {
-            const response = await fetch('http://localhost:3001/api/send-contact', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data)
-            });
-            const result = await response.json();
-            if (result.success) {
-              messageDiv.textContent = 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
-              messageDiv.style.backgroundColor = '#4caf50';
-              messageDiv.style.color = 'white';
-              contactForm.reset();
-            } else {
-              messageDiv.textContent = 'حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.';
-              messageDiv.style.backgroundColor = '#f44336';
-              messageDiv.style.color = 'white';
-            }
-          } catch (error) {
-            messageDiv.textContent = 'حدث خطأ في الاتصال. تأكد من تشغيل الخادم.';
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        const data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          message: formData.get('message')
+        };
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'جاري الإرسال...';
+        submitBtn.disabled = true;
+        const messageDiv = document.getElementById('contactMessage');
+        messageDiv.style.display = 'none';
+        try {
+          // Determine the correct API URL based on the environment
+          const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+          const apiUrl = isLocal ? 'http://localhost:3001' : 'https://zomstore-backend.onrender.com';
+
+          const response = await fetch(`${apiUrl}/api/send-contact`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const result = await response.json();
+          if (result.success) {
+            messageDiv.textContent = 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
+            messageDiv.style.backgroundColor = '#4caf50';
+            messageDiv.style.color = 'white';
+            contactForm.reset();
+          } else {
+            messageDiv.textContent = 'حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.';
             messageDiv.style.backgroundColor = '#f44336';
             messageDiv.style.color = 'white';
           }
-          messageDiv.style.display = 'block';
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        });
-      }
-    });
-  </script>
+        } catch (error) {
+          messageDiv.textContent = 'حدث خطأ في الاتصال. تأكد من أن الخادم يعمل.';
+          messageDiv.style.backgroundColor = '#f44336';
+          messageDiv.style.color = 'white';
+        }
+        messageDiv.style.display = 'block';
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+    }
+  });
+</script>
 </body>
 </html> 
