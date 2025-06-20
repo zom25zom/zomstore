@@ -23,14 +23,7 @@
     "image": "https://i.imgur.com/3Q9Z1Zm.png",
     "description": "طقم فرامل سيراميك أمامية لسيارات هونداي، أداء قوي وعمر افتراضي طويل."
   },
-  {
-    "id": 4,
-    "name": "بطارية AC Delco 70 أمبير",
-    "category": "بطاريات",
-    "price": 350,
-    "image": "https://i.imgur.com/4Q9Z1Zm.png",
-    "description": "بطارية سيارة AC Delco أصلية، قوة تشغيل عالية وضمان سنتين."
-  },
+  
   {
     "id": 5,
     "name": "إطار ميشلان 17 إنش",
